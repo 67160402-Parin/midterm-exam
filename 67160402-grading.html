@@ -241,10 +241,65 @@
 
         return JSON.parse(storedData);
     }
-    //-----------Test-------------//
-    let dataFromStorage = loadFromStorage();
-    console.log(dataFromStorage);
+ 
+    function handleCalculate() {
+        let name = document.getElementById("student-name").value.trim();
+        let subject = document.getElementById("subject-name").value.trim();
+        let midterm = document.getElementById("midterm-score").value;
+        let final = document.getElementById("final-score").value;
+        let assignment = document.getElementById("assignment-score").value;
 
+        if (name === "" || subject === "") {
+            alert("Please enter student name and subject");
+            return;
+        }
+
+        if (isNaN(Number(midterm)) || isNaN(Number(final)) || isNaN(Number(assignment))) {
+            alert("Please enter valid numbers only");
+            return;
+        }
+
+        if (!validateScore(midterm) || !validateScore(final) || !validateScore(assignment)) {
+            alert("All scores must be between 0-100");
+            return;
+        }
+
+        let totalScore = calculateScore(midterm,final,assignment);
+        let grade = getGrade(totalScore);
+        let Status = getStatus(grade);
+
+        document.getElementById("total-score").innerText = totalScore.toFixed(2);
+        document.getElementById("final-grade").innerText = grade;
+        document.getElementById("pass-status").innerText = status;
+        document.getElementById("result-container").style.display = "block";
+
+        let data = {
+            name: name,
+            subject: subject,
+            midterm: Number(midterm),
+            final: Number(final),
+            assignment: Number(assignment),
+            score: Number(totalScore.toFixed(2)),
+            grade: grade,
+            status: status
+        };
+
+        saveToStorage(data);
+    }
+    document.getElementById("btn-calculate").addEventListener("click", handleCalculate);
+
+    function handleClear() {
+        document.getElementById("student-name").value = "";
+        document.getElementById("subject-name").value = "";
+        document.getElementById("midterm-score").value = "";
+        document.getElementById("final-score").value = "";
+        document.getElementById("assignment-score").value = "";
+
+        document.getElementById("result-container").style.display = "none";
+    }
+    document.getElementById("btn-clear").addEventListener("click", handleClear);
+
+    
 </script>
 
 </body>
