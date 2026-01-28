@@ -185,13 +185,20 @@
         return true;
     }
 
+    function calculateScore(midterm,final,assignment) {
+        let m = Number(midterm);
+        let f = Number(final);
+        let a = Number(assignment);
+
+        let totalScore = (m * 0.2) + (f * 0.5) + (a * 0.3);
+
+        return totalScore;
+    }
     /////Test/////
-    console.log(validateScore(85));
-    console.log(validateScore("85"));
-    console.log(validateScore("abc"));
-    console.log(validateScore(-5));
-    console.log(validateScore(110));
-    console.log(validateScore(""));
+    console.log(calculateScore(80,90,70));
+    console.log(calculateScore("80","90","70"));
+    console.log(calculateScore(50,50,50));
+
 </script>
 
 </body>
