@@ -210,12 +210,21 @@
             return "F";
         }
     }
-    /////test/////
-    console.log(getGrade(85));
-    console.log(getGrade(75));
-    console.log(getGrade(65));
-    console.log(getGrade(55));
-    console.log(getGrade(30));
+
+    function getStatus(grade) {
+        if (grade === "F") {
+            return "FAIL";
+        } else {
+            return "PASS";
+        }
+    }
+
+    /////////Test/////////
+    console.log(getStatus("F"));
+    console.log(getStatus("A"));
+    console.log(getStatus("A"));
+    console.log(getStatus("B"));
+    console.log(getStatus("C"));
 </script>
 
 </body>
