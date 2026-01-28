@@ -219,12 +219,32 @@
         }
     }
 
-    /////////Test/////////
-    console.log(getStatus("F"));
-    console.log(getStatus("A"));
-    console.log(getStatus("A"));
-    console.log(getStatus("B"));
-    console.log(getStatus("C"));
+    function saveToStorage(data) {
+        let storedData = localStorage.getItem("studentData");
+
+        let studentArray = [];
+
+        if (storedData !== null) {
+            studentArray = JSON.parse(storedData);
+        }
+
+        studentArray.push(data);
+        localStorage.setItem("studentData",JSON.stringify(studentArray));
+    }
+
+    //-------------Test--------------//
+    let testStudent =  {
+        name: "Parin",
+        subject: "JavaScript",
+        midterm: 90,
+        final: 100,
+        assignment: 85,
+        score: 95,
+        grade: "A",
+        status: "PASS"
+    };
+    saveToStorage(testStudent);
+
 </script>
 
 </body>
