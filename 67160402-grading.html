@@ -194,11 +194,28 @@
 
         return totalScore;
     }
-    /////Test/////
-    console.log(calculateScore(80,90,70));
-    console.log(calculateScore("80","90","70"));
-    console.log(calculateScore(50,50,50));
 
+    function getGrade(score) {
+        let s = Number(score);
+
+        if (s >= 80 && s <= 100) {
+            return "A";
+        } else if (s >= 70 && s < 80) {
+            return "B";
+        } else if (s >= 60 && s < 70) {
+            return "C";
+        } else if (s >= 50 && s < 60) {
+            return "D";
+        } else {
+            return "F";
+        }
+    }
+    /////test/////
+    console.log(getGrade(85));
+    console.log(getGrade(75));
+    console.log(getGrade(65));
+    console.log(getGrade(55));
+    console.log(getGrade(30));
 </script>
 
 </body>
