@@ -167,5 +167,32 @@
 
 </div>
 
+<script>
+    function validateScore(score) {
+        if (score === "" || score === null || score === undefined) {
+            return false;
+        }
+        let num = Number(score);
+
+        if (isNaN(num)) {
+            return false;
+        }
+
+        if (num < 0 || num > 100) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /////Test/////
+    console.log(validateScore(85));
+    console.log(validateScore("85"));
+    console.log(validateScore("abc"));
+    console.log(validateScore(-5));
+    console.log(validateScore(110));
+    console.log(validateScore(""));
+</script>
+
 </body>
 </html>
