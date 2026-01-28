@@ -232,18 +232,18 @@
         localStorage.setItem("studentData",JSON.stringify(studentArray));
     }
 
-    //-------------Test--------------//
-    let testStudent =  {
-        name: "Parin",
-        subject: "JavaScript",
-        midterm: 90,
-        final: 100,
-        assignment: 85,
-        score: 95,
-        grade: "A",
-        status: "PASS"
-    };
-    saveToStorage(testStudent);
+    function loadFromStorage() {
+        let storedData = localStorage.getItem("studentData");
+
+        if (storedData === null) {
+            return null;
+        }
+
+        return JSON.parse(storedData);
+    }
+    //-----------Test-------------//
+    let dataFromStorage = loadFromStorage();
+    console.log(dataFromStorage);
 
 </script>
 
